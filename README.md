@@ -6,5 +6,3 @@ The game:
 
 Controls:
 [Controls of game]
-
-hoi nathan
