@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/GUI/MenuButton.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Fonts/montserrat.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Image/logo_placeholder.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Image/Logo.png" type="Texture" id=6]
+[ext_resource path="res://src/GUI/TitleScreen.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 4 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1800.0
+margin_bottom = 1000.0
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 1680.0
+margin_bottom = 200.0
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 204.0
+margin_right = 1680.0
+margin_bottom = 716.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 838.0
+margin_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Play" type="Button" parent="Menu/CenterRow/Buttons"]
+margin_top = 146.0
+margin_right = 838.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 1 )
+scene_to_load = "res://Scenes/LevelSelect.tscn"
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Buttons/Play"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0.247059, 0.223529, 0.188235, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = ExtResource( 3 )
+text = "Play"
+
+[node name="Options" type="Button" parent="Menu/CenterRow/Buttons"]
+margin_top = 226.0
+margin_right = 838.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Buttons/Options"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0.247059, 0.223529, 0.188235, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = ExtResource( 3 )
+text = "Options"
+
+[node name="Credits" type="Button" parent="Menu/CenterRow/Buttons"]
+margin_top = 306.0
+margin_right = 838.0
+margin_bottom = 366.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="Menu/CenterRow/Buttons/Credits"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color_shadow = Color( 0.247059, 0.223529, 0.188235, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = ExtResource( 3 )
+text = "Credits"
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+margin_left = 842.0
+margin_right = 1680.0
+margin_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
+margin_left = 163.0
+margin_right = 675.0
+margin_bottom = 512.0
+texture = ExtResource( 6 )
+
+[node name="VersionLabel" type="Label" parent="Menu"]
+margin_top = 720.0
+margin_right = 1680.0
+margin_bottom = 920.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Version 1.0.0
+Beta Studio"
+valign = 1
+
+[node name="FadeIn" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
