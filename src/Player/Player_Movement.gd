@@ -8,6 +8,7 @@ const jumpForce = 250
 
 var motion = Vector2()
 var facingRight = true
+onready var tilemap = get_node("../TileMap")
 
 func _ready():
 	pass # Replace with function body.
@@ -61,6 +62,14 @@ func _physics_process(_delta):
 				$Sprite.scale.x = -1
 			
 		elif motion.y > 0:
-			print("Falling")
+			null
+			# falling
 	
 	motion = move_and_slide(motion, up)
+	
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		var cell = tilemap.world_to_map(collision.position - collision.normal)
+		var tile_id = tilemap.get_cellv(cell)
+		
+		print(cell)
