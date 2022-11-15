@@ -4,7 +4,7 @@ const up = Vector2(0,-1)
 const gravity = 20
 const maxFallSpeed = 200
 const maxMovementSpeed = 40
-const jumpForce = 250
+const jumpForce = 300
 
 var motion = Vector2()
 var facingRight = true
