@@ -108,6 +108,14 @@ margin_right = 675.0
 margin_bottom = 512.0
 texture = ExtResource( 6 )
 
+[node name="Button" type="Button" parent="Menu/CenterRow/CenterContainer"]
+margin_left = 413.0
+margin_top = 246.0
+margin_right = 425.0
+margin_bottom = 266.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
 [node name="VersionLabel" type="Label" parent="Menu"]
 margin_top = 840.0
 margin_right = 1680.0
