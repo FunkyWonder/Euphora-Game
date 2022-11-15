@@ -62,6 +62,7 @@ func _physics_process(_delta):
 				$Sprite.scale.x = -1
 			
 		elif motion.y > 0:
+# warning-ignore:standalone_expression
 			null
 			# falling
 	
@@ -70,6 +71,7 @@ func _physics_process(_delta):
 	for i in range(get_slide_count()):
 		var collision = get_slide_collision(i)
 		var cell = tilemap.world_to_map(collision.position - collision.normal)
+# warning-ignore:unused_variable
 		var tile_id = tilemap.get_cellv(cell)
 		
 		print(cell)

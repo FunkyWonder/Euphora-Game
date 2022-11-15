@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/FadeIn.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Fonts/montserrat.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Assets/Image/logo_placeholder.png" type="Texture" id=5]
+[ext_resource path="res://icon-small-small.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Image/Logo.png" type="Texture" id=6]
 [ext_resource path="res://src/GUI/TitleScreen.gd" type="Script" id=7]
 
@@ -25,14 +25,14 @@ margin_bottom = 1000.0
 
 [node name="Logo" type="TextureRect" parent="Menu"]
 margin_right = 1680.0
-margin_bottom = 200.0
+margin_bottom = 320.0
 texture = ExtResource( 5 )
 stretch_mode = 6
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
-margin_top = 204.0
+margin_top = 324.0
 margin_right = 1680.0
-margin_bottom = 716.0
+margin_bottom = 836.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
@@ -109,7 +109,7 @@ margin_bottom = 512.0
 texture = ExtResource( 6 )
 
 [node name="VersionLabel" type="Label" parent="Menu"]
-margin_top = 720.0
+margin_top = 840.0
 margin_right = 1680.0
 margin_bottom = 920.0
 size_flags_vertical = 3
