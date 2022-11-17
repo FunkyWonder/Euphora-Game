@@ -8,6 +8,7 @@ const jumpForce = 300
 
 var motion = Vector2()
 var facingRight = true
+var debounce = false
 onready var tilemap = get_node("../TileMap")
 
 func _ready():
@@ -72,6 +73,16 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		var cell = tilemap.world_to_map(collision.position - collision.normal)
 # warning-ignore:unused_variable
-		var tile_id = tilemap.get_cellv(cell)
+		var tileID = tilemap.get_cellv(cell)
 		
-		print(cell)
+		#print(tile_id)
+		
+		# die
+		if tileID == 76:
+			if debounce == false:
+				print("die")
+				debounce = true
+				
+				
+				
+				get_tree().reload_current_scene()
