@@ -1884,7 +1884,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 140, -90 )
+position = Vector2( 140, -88.588 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
