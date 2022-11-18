@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/Fonts/montserrat.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/ReturnToTitle.gd" type="Script" id=2]
-[ext_resource path="res://src/GUI/LevelSelect.gd" type="Script" id=3]
+[ext_resource path="res://src/GUI/LoadScene.gd" type="Script" id=3]
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
@@ -138,14 +138,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Back"
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 1" to="HBoxContainer/VBoxContainer/Level 1" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 2" to="HBoxContainer/VBoxContainer/Level 2" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 3" to="HBoxContainer/VBoxContainer/Level 3" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 4" to="HBoxContainer/VBoxContainer/Level 4" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 5" to="HBoxContainer/VBoxContainer/Level 5" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 6" to="HBoxContainer/VBoxContainer/Level 6" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 7" to="HBoxContainer/VBoxContainer/Level 7" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 8" to="HBoxContainer/VBoxContainer/Level 8" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 9" to="HBoxContainer/VBoxContainer/Level 9" method="_on_Level_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 10" to="HBoxContainer/VBoxContainer/Level 10" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 1" to="HBoxContainer/VBoxContainer/Level 1" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 2" to="HBoxContainer/VBoxContainer/Level 2" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 3" to="HBoxContainer/VBoxContainer/Level 3" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 4" to="HBoxContainer/VBoxContainer/Level 4" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 5" to="HBoxContainer/VBoxContainer/Level 5" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 6" to="HBoxContainer/VBoxContainer/Level 6" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 7" to="HBoxContainer/VBoxContainer/Level 7" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 8" to="HBoxContainer/VBoxContainer/Level 8" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 9" to="HBoxContainer/VBoxContainer/Level 9" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 10" to="HBoxContainer/VBoxContainer/Level 10" method="_on_Button_Pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Button_pressed"]

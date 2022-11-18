@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Walk 4.wav-a752cbc9b496030aae69914d91a64d33.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Walk 4.wav"
+dest_files=[ "res://.import/Walk 4.wav-a752cbc9b496030aae69914d91a64d33.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

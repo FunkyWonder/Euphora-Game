@@ -50,7 +50,7 @@ margin_bottom = 206.0
 rect_min_size = Vector2( 360, 60 )
 flat = true
 script = ExtResource( 1 )
-scene_to_load = "res://Scenes/LevelSelect.tscn"
+scene_to_load = "res://Scenes/DifficultySelect.tscn"
 
 [node name="Label" type="Label" parent="Menu/CenterRow/Buttons/Play"]
 margin_right = 40.0
@@ -108,13 +108,17 @@ margin_right = 675.0
 margin_bottom = 512.0
 texture = ExtResource( 6 )
 
-[node name="Button" type="Button" parent="Menu/CenterRow/CenterContainer"]
-margin_left = 413.0
-margin_top = 246.0
-margin_right = 425.0
-margin_bottom = 266.0
+[node name="AdminButton" type="Button" parent="Menu/CenterRow/CenterContainer/TextureRect"]
+show_behind_parent = true
+margin_left = 60.0
+margin_top = 32.0
+margin_right = 416.0
+margin_bottom = 517.0
 size_flags_horizontal = 2
 size_flags_vertical = 2
+flat = true
+script = ExtResource( 1 )
+scene_to_load = "res://Scenes/LevelSelect.tscn"
 
 [node name="VersionLabel" type="Label" parent="Menu"]
 margin_top = 840.0
@@ -129,4 +133,5 @@ valign = 1
 [node name="FadeIn" parent="." instance=ExtResource( 2 )]
 visible = false
 
+[connection signal="button_down" from="Menu/CenterRow/CenterContainer/TextureRect/AdminButton" to="." method="_on_AdminButton_button_down"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
