@@ -75,14 +75,17 @@ func _physics_process(_delta):
 # warning-ignore:unused_variable
 		var tileID = tilemap.get_cellv(cell)
 		
-		#print(tile_id)
+		print(tileID)
 		
 		# die
 		if tileID == 76:
 			if debounce == false:
 				print("die")
 				debounce = true
-				
-				
-				
+				get_tree().reload_current_scene()
+		
+		if tileID == 56:
+			if debounce == false:
+				print("You completed the level")
+				debounce = true
 				get_tree().reload_current_scene()

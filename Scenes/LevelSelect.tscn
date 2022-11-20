@@ -34,8 +34,8 @@ align = 1
 margin_top = 64.0
 margin_right = 58.0
 margin_bottom = 84.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 1"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 1.tscn"
@@ -44,8 +44,8 @@ scene_to_load = "res://Scenes/Levels/Level 1.tscn"
 margin_top = 88.0
 margin_right = 58.0
 margin_bottom = 108.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 2"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 2.tscn"
@@ -54,8 +54,8 @@ scene_to_load = "res://Scenes/Levels/Level 2.tscn"
 margin_top = 112.0
 margin_right = 58.0
 margin_bottom = 132.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 3"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 3.tscn"
@@ -64,8 +64,8 @@ scene_to_load = "res://Scenes/Levels/Level 3.tscn"
 margin_top = 136.0
 margin_right = 58.0
 margin_bottom = 156.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 4"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 4.tscn"
@@ -74,8 +74,8 @@ scene_to_load = "res://Scenes/Levels/Level 4.tscn"
 margin_top = 160.0
 margin_right = 58.0
 margin_bottom = 180.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 5"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 5.tscn"
@@ -84,8 +84,8 @@ scene_to_load = "res://Scenes/Levels/Level 5.tscn"
 margin_top = 184.0
 margin_right = 58.0
 margin_bottom = 204.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 6"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 6.tscn"
@@ -94,8 +94,8 @@ scene_to_load = "res://Scenes/Levels/Level 6.tscn"
 margin_top = 208.0
 margin_right = 58.0
 margin_bottom = 228.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 7"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 7.tscn"
@@ -104,8 +104,8 @@ scene_to_load = "res://Scenes/Levels/Level 7.tscn"
 margin_top = 232.0
 margin_right = 58.0
 margin_bottom = 252.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 8"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 8.tscn"
@@ -114,8 +114,8 @@ scene_to_load = "res://Scenes/Levels/Level 8.tscn"
 margin_top = 256.0
 margin_right = 58.0
 margin_bottom = 276.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 9"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 9.tscn"
@@ -124,8 +124,8 @@ scene_to_load = "res://Scenes/Levels/Level 9.tscn"
 margin_top = 280.0
 margin_right = 66.0
 margin_bottom = 300.0
+rect_pivot_offset = Vector2( -297, -101 )
 size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "Level 10"
 script = ExtResource( 3 )
 scene_to_load = "res://Scenes/Levels/Level 10.tscn"
@@ -138,14 +138,14 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Back"
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 1" to="HBoxContainer/VBoxContainer/Level 1" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 2" to="HBoxContainer/VBoxContainer/Level 2" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 3" to="HBoxContainer/VBoxContainer/Level 3" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 4" to="HBoxContainer/VBoxContainer/Level 4" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 5" to="HBoxContainer/VBoxContainer/Level 5" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 6" to="HBoxContainer/VBoxContainer/Level 6" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 7" to="HBoxContainer/VBoxContainer/Level 7" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 8" to="HBoxContainer/VBoxContainer/Level 8" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 9" to="HBoxContainer/VBoxContainer/Level 9" method="_on_Button_Pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 10" to="HBoxContainer/VBoxContainer/Level 10" method="_on_Button_Pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 1" to="HBoxContainer/VBoxContainer/Level 1" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 2" to="HBoxContainer/VBoxContainer/Level 2" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 3" to="HBoxContainer/VBoxContainer/Level 3" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 4" to="HBoxContainer/VBoxContainer/Level 4" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 5" to="HBoxContainer/VBoxContainer/Level 5" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 6" to="HBoxContainer/VBoxContainer/Level 6" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 7" to="HBoxContainer/VBoxContainer/Level 7" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 8" to="HBoxContainer/VBoxContainer/Level 8" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 9" to="HBoxContainer/VBoxContainer/Level 9" method="_on_Level_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Level 10" to="HBoxContainer/VBoxContainer/Level 10" method="_on_Level_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Button_pressed"]
