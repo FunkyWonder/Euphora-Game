@@ -20,7 +20,11 @@ func _on_Difficult_pressed():
 
 func _on_Hardcore_pressed():
 	print("Pressed Hardcore Button")
-	GenerateLevels()
+	LevelVariables.WorldOneLevels.append(1)
+	LevelVariables.WorldOneLevels.append(2)
+	LevelVariables.WorldOneLevels.append(3)
+	LevelVariables.WorldOneLevels.append(4)
+	LevelVariables.WorldOneLevels.append(5)
 	get_tree().change_scene("res://Scenes/Levels/Level 1.tscn")
 
 func GenerateLevels():
