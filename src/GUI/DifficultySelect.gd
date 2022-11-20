@@ -20,7 +20,6 @@ func _on_Difficult_pressed():
 
 func _on_Hardcore_pressed():
 	print("Pressed Hardcore Button")
-	LevelVariables.WorldOneLevels.append(1)
 	LevelVariables.WorldOneLevels.append(2)
 	LevelVariables.WorldOneLevels.append(3)
 	LevelVariables.WorldOneLevels.append(4)

@@ -86,7 +86,7 @@ func _physics_process(_delta):
 			if debounce == false:
 				print("You completed the level")
 				debounce = true
-				LevelVariables.CurrentLevel += 1
 				currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
 				get_tree().change_scene("res://Scenes/Levels/Level %d.tscn"%[currentLevelNumber])
+				LevelVariables.CurrentLevel += 1
 
