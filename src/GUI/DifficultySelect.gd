@@ -7,7 +7,7 @@ func _ready():
 
 func _on_Easy_pressed():
 	print("Pressed Easy Button")
-	LevelVariables.easy = true
+	DifficultyVariables.easy = true
 	PlayerVariables.Health = 69
 	AddTutorialLevels()
 	GenerateLevels()
@@ -15,7 +15,7 @@ func _on_Easy_pressed():
 
 func _on_Difficult_pressed():
 	print("Pressed Difficult Button")
-	LevelVariables.medium = true
+	DifficultyVariables.medium = true
 	PlayerVariables.Health = 3
 	AddTutorialLevels()
 	GenerateLevels()
@@ -23,7 +23,7 @@ func _on_Difficult_pressed():
 
 func _on_Hardcore_pressed():
 	print("Pressed Hardcore Button")
-	LevelVariables.hard = true
+	DifficultyVariables.hard = true
 	PlayerVariables.Health = 1
 	AddTutorialLevels()
 	GenerateLevels()
