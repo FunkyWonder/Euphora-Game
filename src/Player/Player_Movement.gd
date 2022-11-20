@@ -9,7 +9,7 @@ const jumpForce = 300
 var motion = Vector2()
 var facingRight = true
 var debounce = false
-var currentLevelNumber
+var currentLevelNumber = 0
 onready var tilemap = get_node("../TileMap")
 
 func _physics_process(_delta):
@@ -86,7 +86,23 @@ func _physics_process(_delta):
 			if debounce == false:
 				print("You completed the level")
 				debounce = true
-				currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
-				get_tree().change_scene("res://Scenes/Levels/Level %d.tscn"%[currentLevelNumber])
+				
+				print(LevelVariables.CurrentLevel)
+				
+				if LevelVariables.CurrentLevel <= 3:
+					currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
+					get_tree().change_scene("res://Scenes/Levels/World 1/Level %d.tscn"%[currentLevelNumber])
+				
+				if LevelVariables.CurrentLevel <= 8 and LevelVariables.CurrentLevel >= 4:
+					currentLevelNumber = LevelVariables.WorldTwoLevels[LevelVariables.CurrentLevel - 4]
+					get_tree().change_scene("res://Scenes/Levels/World 2/Level %d.tscn"%[currentLevelNumber])
+				
+				if LevelVariables.CurrentLevel <= 13 and LevelVariables.CurrentLevel >= 9:
+					currentLevelNumber = LevelVariables.WorldThreeLevels[LevelVariables.CurrentLevel - 9]
+					get_tree().change_scene("res://Scenes/Levels/World 3/Level %d.tscn"%[currentLevelNumber])
+				
+				if LevelVariables.CurrentLevel <= 18 and LevelVariables.CurrentLevel >= 14:
+					currentLevelNumber = LevelVariables.WorldFourLevels[LevelVariables.CurrentLevel - 14]
+					get_tree().change_scene("res://Scenes/Levels/World 4/Level %d.tscn"%[currentLevelNumber])
+				
 				LevelVariables.CurrentLevel += 1
-
