@@ -18,6 +18,8 @@ config/icon="res://Assets/Image/Logo.png"
 [autoload]
 
 LevelVariables="*res://src/Global/LevelVariables.gd"
+DifficultyVariables="*res://src/Global/DifficultyVariables.gd"
+PlayerVariables="*res://src/Global/PlayerVariables.gd"
 
 [display]
 

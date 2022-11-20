@@ -77,14 +77,16 @@ func _physics_process(_delta):
 		# die
 		if tileID == 199:
 			if debounce == false:
-				print("die")
 				debounce = true
+				
+				if DifficultyVariables.easy == true:
+					PlayerVariables.Health += 1
+				
 				get_tree().reload_current_scene()
 		
 		# level complete
 		if tileID == 56:
 			if debounce == false:
-				print("You completed the level")
 				debounce = true
 				
 				print(LevelVariables.CurrentLevel)

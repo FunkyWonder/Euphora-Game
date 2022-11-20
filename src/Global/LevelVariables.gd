@@ -6,7 +6,3 @@ var WorldOneLevels = []
 var WorldTwoLevels = []
 var WorldThreeLevels = []
 var WorldFourLevels = []
-
-func _ready():
-	pass # Replace with function body.
-

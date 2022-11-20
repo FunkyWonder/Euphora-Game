@@ -1,31 +1,30 @@
 extends Node
 
-onready var LevelVariables = get_node("/root/LevelVariables")
 var random = RandomNumberGenerator.new()
 
 func _ready():
 	random.randomize()
-	
-	pass
 
 func _on_Easy_pressed():
 	print("Pressed Easy Button")
+	LevelVariables.easy = true
+	PlayerVariables.Health = 69
 	AddTutorialLevels()
 	GenerateLevels()
-	print(LevelVariables.WorldOneLevels)
-	print(LevelVariables.WorldTwoLevels)
-	print(LevelVariables.WorldThreeLevels)
-	print(LevelVariables.WorldFourLevels)
 	get_tree().change_scene("res://Scenes/Levels/World 1/Level 1.tscn")
 
 func _on_Difficult_pressed():
 	print("Pressed Difficult Button")
+	LevelVariables.medium = true
+	PlayerVariables.Health = 3
 	AddTutorialLevels()
 	GenerateLevels()
 	get_tree().change_scene("res://Scenes/Levels/World 1/Level 1.tscn")
 
 func _on_Hardcore_pressed():
 	print("Pressed Hardcore Button")
+	LevelVariables.hard = true
+	PlayerVariables.Health = 1
 	AddTutorialLevels()
 	GenerateLevels()
 	get_tree().change_scene("res://Scenes/Levels/World 1/Level 1.tscn")

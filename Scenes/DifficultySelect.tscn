@@ -40,22 +40,22 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Easy"
 
-[node name="Difficult" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Medium" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 576.0
 margin_right = 1103.0
 margin_bottom = 440.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Difficult"
+text = "Medium"
 
-[node name="Hardcore" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Hard" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 1153.0
 margin_right = 1680.0
 margin_bottom = 440.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Hardcore"
+text = "Hard"
 
 [node name="Back" type="Button" parent="VBoxContainer"]
 margin_top = 900.0
@@ -67,5 +67,6 @@ text = "Back"
 script = ExtResource( 2 )
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Easy" to="." method="_on_Easy_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Difficult" to="." method="_on_Difficult_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Hardcore" to="." method="_on_Hardcore_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Medium" to="." method="_on_Difficult_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Hard" to="." method="_on_Hardcore_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="VBoxContainer/Back" method="_on_Back_pressed"]
