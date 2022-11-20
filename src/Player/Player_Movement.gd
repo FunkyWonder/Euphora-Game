@@ -10,8 +10,11 @@ var motion = Vector2()
 var facingRight = true
 var debounce = false
 onready var tilemap = get_node("../TileMap")
+onready var LevelVariables = get_node("/root/LevelVariables")
 
 func _ready():
+	print(LevelVariables.health)
+	
 	pass # Replace with function body.
 
 func _physics_process(_delta):
@@ -84,6 +87,7 @@ func _physics_process(_delta):
 				debounce = true
 				get_tree().reload_current_scene()
 		
+		# level complete
 		if tileID == 56:
 			if debounce == false:
 				print("You completed the level")
