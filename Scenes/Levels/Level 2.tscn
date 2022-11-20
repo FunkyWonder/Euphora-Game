@@ -4801,7 +4801,7 @@ current = true
 zoom = Vector2( 0.2, 0.2 )
 process_mode = 0
 
-[node name="TileMap2" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 208 )
 cell_size = Vector2( 16, 16 )
 format = 1
