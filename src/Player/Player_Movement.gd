@@ -12,9 +12,6 @@ var debounce = false
 var currentLevelNumber
 onready var tilemap = get_node("../TileMap")
 
-func _ready():
-	print(LevelVariables.WorldOneLevels)
-
 func _physics_process(_delta):
 	var input = false
 	motion.y += gravity

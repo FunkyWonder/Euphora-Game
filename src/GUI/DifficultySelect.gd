@@ -31,5 +31,3 @@ func GenerateLevels():
 			RandomNumber = random.randi_range(0, LevelVariables.MaxLevels)
 		
 		LevelVariables.WorldOneLevels.append(RandomNumber)
-	
-	print(LevelVariables.WorldOneLevels)
