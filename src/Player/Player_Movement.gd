@@ -9,13 +9,11 @@ const jumpForce = 300
 var motion = Vector2()
 var facingRight = true
 var debounce = false
+var currentLevelNumber
 onready var tilemap = get_node("../TileMap")
-onready var LevelVariables = get_node("/root/LevelVariables")
 
 func _ready():
-	print(LevelVariables.health)
-	
-	pass # Replace with function body.
+	print(LevelVariables.WorldOneLevels)
 
 func _physics_process(_delta):
 	var input = false
@@ -66,8 +64,7 @@ func _physics_process(_delta):
 				$Sprite.scale.x = -1
 			
 		elif motion.y > 0:
-# warning-ignore:standalone_expression
-			null
+			pass
 			# falling
 	
 	motion = move_and_slide(motion, up)
@@ -92,4 +89,7 @@ func _physics_process(_delta):
 			if debounce == false:
 				print("You completed the level")
 				debounce = true
-				get_tree().reload_current_scene()
+				LevelVariables.CurrentLevel += 1
+				currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
+				get_tree().change_scene("res://Scenes/Levels/Level %d.tscn"%[currentLevelNumber])
+
