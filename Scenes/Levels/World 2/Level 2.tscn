@@ -1,15 +1,31 @@
-[gd_scene load_steps=205 format=2]
+[gd_scene load_steps=207 format=2]
 
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=3]
-[ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=4]
+[ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Audio/Walk 1.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Image/Sprite sheet.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.5, 7.5 )
+[sub_resource type="RectangleShape2D" id=208]
+extents = Vector2( 3.5, 7.5 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=209]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=210]
 resource_name = "Jump"
 length = 0.5
 loop = true
@@ -26,7 +42,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=211]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -39,6 +55,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=212]
+resource_name = "Run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
 }
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
@@ -4777,7 +4810,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 25.947, 54.945 )
+position = Vector2( 26, 55 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -4787,13 +4820,21 @@ vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( -0.5, 0.5 )
-shape = SubResource( 1 )
+shape = SubResource( 208 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/Idle = ExtResource( 4 )
-anims/Jump = SubResource( 12 )
-anims/RESET = SubResource( 11 )
-anims/Run = ExtResource( 3 )
+anims/Idle = SubResource( 209 )
+anims/Jump = SubResource( 210 )
+anims/RESET = SubResource( 211 )
+anims/Run = SubResource( 212 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 3 )
+volume_db = -5.0
+
+[node name="Walk" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 4 )
+volume_db = -5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 40, -30 )

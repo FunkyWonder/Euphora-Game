@@ -20,6 +20,7 @@ config/icon="res://Assets/Image/Logo.png"
 LevelVariables="*res://src/Global/LevelVariables.gd"
 DifficultyVariables="*res://src/Global/DifficultyVariables.gd"
 PlayerVariables="*res://src/Global/PlayerVariables.gd"
+Music="*res://Scenes/Music.tscn"
 
 [display]
 

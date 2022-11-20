@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Audio/Euphora Song Cut.wav" type="AudioStream" id=1]
+[ext_resource path="res://src/Global/MusicLooper.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Audio/Euphora Song Loop.wav" type="AudioStream" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -9.0
+autoplay = true
+
+[node name="MusicLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -9.0
+
+[connection signal="finished" from="Music" to="." method="_on_Music_finished"]

@@ -10,6 +10,7 @@ var motion = Vector2()
 var facingRight = true
 var debounce = false
 var currentLevelNumber = 0
+var walkSoundDelay = 0
 onready var tilemap = get_node("../TileMap")
 
 func _physics_process(_delta):
@@ -26,12 +27,26 @@ func _physics_process(_delta):
 		facingRight = true
 		motion.x = motion.x + maxMovementSpeed
 		$AnimationPlayer.play("Run")
+		
+		if is_on_floor():
+			walkSoundDelay += 1
+			
+			if walkSoundDelay >= 15:
+				walkSoundDelay = 0
+				$Walk.play()
 	
 	if Input.is_action_pressed("left"):
 		input = true
 		facingRight = false
 		motion.x = motion.x - maxMovementSpeed
 		$AnimationPlayer.play("Run")
+		
+		if is_on_floor():
+			walkSoundDelay += 1
+			
+			if walkSoundDelay >= 15:
+				walkSoundDelay = 0
+				$Walk.play()
 	
 	if input == false:
 		motion.x = lerp(motion.x, 0, 0.2)
@@ -49,6 +64,7 @@ func _physics_process(_delta):
 	
 	if is_on_floor():
 		if Input.is_action_pressed("jump"):
+			$Jump.play()
 			motion.y = -jumpForce
 	
 	if !is_on_floor():
