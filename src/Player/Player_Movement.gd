@@ -78,10 +78,10 @@ func _physics_process(_delta):
 # warning-ignore:unused_variable
 		var tileID = tilemap.get_cellv(cell)
 		
-		print(tileID)
+		#print(tileID)
 		
 		# die
-		if tileID == 76:
+		if tileID == 199:
 			if debounce == false:
 				print("die")
 				debounce = true
