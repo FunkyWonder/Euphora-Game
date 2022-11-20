@@ -4804,3 +4804,4 @@ process_mode = 0
 tile_set = SubResource( 207 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( -327689, 0, 0, -327688, 0, 0, -327687, 0, 0, -327686, 0, 0, 196599, 1, 0, 262135, 0, 0, 262136, 0, 0 )
