@@ -105,22 +105,30 @@ func _physics_process(_delta):
 			if debounce == false:
 				debounce = true
 				
-				print(LevelVariables.CurrentLevel)
+				currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
+				get_tree().change_scene("res://Scenes/Levels/World 1/Level %d.tscn"%[currentLevelNumber])
+				LevelVariables.CurrentLevel += 1
+			
+		if tileID == 1:
+			if debounce == false:
+				debounce = true
 				
-				if LevelVariables.CurrentLevel <= 3:
-					currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
-					get_tree().change_scene("res://Scenes/Levels/World 1/Level %d.tscn"%[currentLevelNumber])
+				currentLevelNumber = LevelVariables.WorldTwoLevels[LevelVariables.CurrentLevel - 4]
+				get_tree().change_scene("res://Scenes/Levels/World 2/Level %d.tscn"%[currentLevelNumber])
+				LevelVariables.CurrentLevel += 1
+		
+		if LevelVariables.CurrentLevel <= 13 and LevelVariables.CurrentLevel >= 9:
+			if debounce == false:
+				debounce = true
 				
-				if LevelVariables.CurrentLevel <= 8 and LevelVariables.CurrentLevel >= 4:
-					currentLevelNumber = LevelVariables.WorldTwoLevels[LevelVariables.CurrentLevel - 4]
-					get_tree().change_scene("res://Scenes/Levels/World 2/Level %d.tscn"%[currentLevelNumber])
+				currentLevelNumber = LevelVariables.WorldThreeLevels[LevelVariables.CurrentLevel - 9]
+				get_tree().change_scene("res://Scenes/Levels/World 3/Level %d.tscn"%[currentLevelNumber])
+				LevelVariables.CurrentLevel += 1
+		
+		if LevelVariables.CurrentLevel <= 18 and LevelVariables.CurrentLevel >= 14:
+			if debounce == false:
+				debounce = true
 				
-				if LevelVariables.CurrentLevel <= 13 and LevelVariables.CurrentLevel >= 9:
-					currentLevelNumber = LevelVariables.WorldThreeLevels[LevelVariables.CurrentLevel - 9]
-					get_tree().change_scene("res://Scenes/Levels/World 3/Level %d.tscn"%[currentLevelNumber])
-				
-				if LevelVariables.CurrentLevel <= 18 and LevelVariables.CurrentLevel >= 14:
-					currentLevelNumber = LevelVariables.WorldFourLevels[LevelVariables.CurrentLevel - 14]
-					get_tree().change_scene("res://Scenes/Levels/World 4/Level %d.tscn"%[currentLevelNumber])
-				
+				currentLevelNumber = LevelVariables.WorldFourLevels[LevelVariables.CurrentLevel - 14]
+				get_tree().change_scene("res://Scenes/Levels/World 4/Level %d.tscn"%[currentLevelNumber])
 				LevelVariables.CurrentLevel += 1
