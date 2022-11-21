@@ -1,10 +1,13 @@
-[gd_scene load_steps=207 format=2]
+[gd_scene load_steps=211 format=2]
 
 [ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Audio/Walk 1.wav" type="AudioStream" id=2]
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Image/Sprite sheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=5]
+[ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -4807,6 +4810,10 @@ tracks/0/keys = {
 "values": [ 8, 9 ]
 }
 
+[sub_resource type="DynamicFont" id=214]
+size = 128
+font_data = ExtResource( 7 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -4847,3 +4854,25 @@ volume_db = -5.0
 [node name="Walk" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 2 )
 volume_db = -5.0
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+
+[node name="HealthPoints" type="Label" parent="GUI"]
+margin_left = -147.0
+margin_top = -134.0
+margin_right = 8.99998
+margin_bottom = 23.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = SubResource( 214 )
+text = "3x"
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+margin_left = -130.0
+margin_top = -136.0
+margin_right = 950.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 8 )

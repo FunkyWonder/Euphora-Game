@@ -97,10 +97,13 @@ func _physics_process(_delta):
 			if debounce == false:
 				debounce = true
 				
-				if DifficultyVariables.easy == true:
-					PlayerVariables.Health += 1
+				if DifficultyVariables.medium == true or DifficultyVariables.hard == true:
+					PlayerVariables.Health -= 1
 				
-				get_tree().reload_current_scene()
+				if PlayerVariables.Health == 0:
+					get_tree().change_scene("res://Scenes/GameOver.tscn")
+				else:
+					get_tree().reload_current_scene()
 		
 		# level complete
 		if tileID == 56:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=2]
+[gd_scene load_steps=211 format=2]
 
 [ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=1]
 [ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=2]
@@ -6,7 +6,10 @@
 [ext_resource path="res://Assets/Image/Sprite sheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Audio/Walk 1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=9]
+[ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 7.5 )
@@ -4776,6 +4779,10 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 199/z_index = 0
 
+[sub_resource type="DynamicFont" id=279]
+size = 128
+font_data = ExtResource( 7 )
+
 [node name="Node2D" type="Node2D"]
 __meta__ = {
 "_edit_vertical_guides_": [  ]
@@ -4856,3 +4863,25 @@ margin_bottom = 6.0
 rect_scale = Vector2( 0.5, 0.5 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+
+[node name="HealthPoints" type="Label" parent="GUI"]
+margin_left = -147.0
+margin_top = -134.0
+margin_right = 8.99998
+margin_bottom = 23.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = SubResource( 279 )
+text = "3x"
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+margin_left = -130.0
+margin_top = -136.0
+margin_right = 950.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 9 )
