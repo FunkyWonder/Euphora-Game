@@ -1,4 +1,4 @@
-[gd_scene load_steps=211 format=2]
+[gd_scene load_steps=215 format=2]
 
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Assets/Image/Sprites/Button/button uit.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Image/Tiles/Bricks Wall.png" type="Texture" id=7]
 [ext_resource path="res://src/Misc/Button.gd" type="Script" id=8]
+[ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=208]
 extents = Vector2( 3.5, 7.5 )
@@ -4813,6 +4816,10 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 [sub_resource type="RectangleShape2D" id=213]
 extents = Vector2( 8, 8 )
 
+[sub_resource type="DynamicFont" id=214]
+size = 128
+font_data = ExtResource( 10 )
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 8 )
 button1 = "Button"
@@ -4874,5 +4881,27 @@ shape = SubResource( 213 )
 
 [node name="Sprite" type="Sprite" parent="Wall"]
 texture = ExtResource( 7 )
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 9 )
+
+[node name="HealthPoints" type="Label" parent="GUI"]
+margin_left = -147.0
+margin_top = -134.0
+margin_right = 8.99998
+margin_bottom = 23.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = SubResource( 214 )
+text = "3x"
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+margin_left = -130.0
+margin_top = -136.0
+margin_right = 950.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 11 )
 
 [connection signal="body_entered" from="Button" to="." method="_on_Button_body_entered"]
