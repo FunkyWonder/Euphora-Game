@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=2]
+[gd_scene load_steps=219 format=2]
 
 [ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=1]
 [ext_resource path="res://Assets/Audio/Walk 1.wav" type="AudioStream" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=206]
 extents = Vector2( 3.5, 7.5 )
@@ -4816,6 +4820,17 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 size = 128
 font_data = ExtResource( 7 )
 
+[sub_resource type="SpriteFrames" id=212]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=213]
+extents = Vector2( 5, 7.5 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -4890,3 +4905,13 @@ position = Vector2( 0, -32.15 )
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 9 )
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 184, -72 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Door"]
+frames = SubResource( 212 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 213 )

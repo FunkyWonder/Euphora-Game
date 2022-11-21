@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=2]
+[gd_scene load_steps=219 format=2]
 
 [ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=1]
 [ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=2]
@@ -12,6 +12,10 @@
 [ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 7.5 )
@@ -4785,6 +4789,17 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 size = 128
 font_data = ExtResource( 7 )
 
+[sub_resource type="SpriteFrames" id=280]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=281]
+extents = Vector2( 5, 7.5 )
+
 [node name="Node2D" type="Node2D"]
 __meta__ = {
 "_edit_vertical_guides_": [  ]
@@ -4899,3 +4914,13 @@ position = Vector2( 0, -32.15 )
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 11 )
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 72, 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Door"]
+frames = SubResource( 280 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 281 )
