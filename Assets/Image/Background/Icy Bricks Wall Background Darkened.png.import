@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HeartUI.png-4a6950fd72029a8e7e88860249c96cee.stex"
+path="res://.import/Icy Bricks Wall Background Darkened.png-86c379f4ac64748b6ab70edbf8c8f445.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Audio/HeartUI.png"
-dest_files=[ "res://.import/HeartUI.png-4a6950fd72029a8e7e88860249c96cee.stex" ]
+source_file="res://Assets/Image/Background/Icy Bricks Wall Background Darkened.png"
+dest_files=[ "res://.import/Icy Bricks Wall Background Darkened.png-86c379f4ac64748b6ab70edbf8c8f445.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

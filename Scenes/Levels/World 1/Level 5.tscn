@@ -1,15 +1,41 @@
-[gd_scene load_steps=205 format=2]
+[gd_scene load_steps=220 format=2]
 
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=2]
-[ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=3]
+[ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Audio/Walk 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Image/Sprite sheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=5]
+[ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Audio/DoorOpen.wav" type="AudioStream" id=15]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.5, 7.5 )
+[sub_resource type="RectangleShape2D" id=206]
+extents = Vector2( 3.5, 7.5 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=207]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=208]
 resource_name = "Jump"
 length = 0.5
 loop = true
@@ -26,7 +52,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=209]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -39,6 +65,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=210]
+resource_name = "Run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
 }
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
@@ -4774,10 +4817,25 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 199/z_index = 0
 
+[sub_resource type="DynamicFont" id=211]
+size = 128
+font_data = ExtResource( 7 )
+
+[sub_resource type="SpriteFrames" id=212]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=213]
+extents = Vector2( 5, 7.5 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 170.188, -12.171 )
+position = Vector2( 170, -12 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -4787,13 +4845,24 @@ vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( -0.5, 0.5 )
-shape = SubResource( 1 )
+shape = SubResource( 206 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
-anims/Idle = ExtResource( 2 )
-anims/Jump = SubResource( 12 )
-anims/RESET = SubResource( 11 )
-anims/Run = ExtResource( 3 )
+anims/Idle = SubResource( 207 )
+anims/Jump = SubResource( 208 )
+anims/RESET = SubResource( 209 )
+anims/Run = SubResource( 210 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 2 )
+volume_db = -5.0
+
+[node name="Walk" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 3 )
+volume_db = -5.0
+
+[node name="Die" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 40, -30 )
@@ -4806,3 +4875,48 @@ tile_set = SubResource( 205 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( -589835, 55, 0, -589834, 55, 0, -589833, 55, 0, -589832, 55, 0, -589831, 55, 0, -589830, 55, 0, -589829, 55, 0, -589828, 55, 0, -589827, 55, 0, -589826, 55, 0, -589825, 55, 0, -655360, 55, 0, -655359, 55, 0, -655358, 55, 0, -655357, 55, 0, -655356, 55, 0, -655355, 55, 0, -655354, 55, 0, -655353, 55, 0, -655352, 55, 0, -655351, 55, 0, -655350, 55, 0, -655349, 55, 0, -655348, 55, 0, -655347, 55, 0, -655346, 55, 0, -524299, 55, 0, -589811, 65, 0, -589810, 55, 0, -458763, 55, 0, -524275, 65, 0, -524274, 74, 0, -393227, 55, 0, -458739, 65, 0, -458738, 55, 0, -327691, 55, 0, -393203, 65, 0, -393202, 55, 0, -262155, 55, 0, -327675, 72, 0, -327674, 175, 0, -327673, 175, 0, -327672, 71, 0, -327667, 57, 0, -327666, 63, 0, -196619, 55, 0, -262141, 72, 0, -262140, 71, 0, -262131, 56, 0, -262130, 65, 0, -131083, 55, 0, -196608, 72, 0, -196607, 71, 0, -196596, 59, 0, -196595, 68, 0, -196594, 61, 0, -65547, 55, 0, -65539, 72, 0, -65538, 71, 0, -131060, 65, 0, -131059, 55, 0, -131058, 55, 0, -11, 55, 0, -6, 72, 0, -5, 71, 0, -65524, 65, 0, -65523, 55, 0, -65522, 55, 0, 65526, 68, 0, 65527, 60, 0, 8, 59, 0, 9, 68, 0, 10, 68, 0, 11, 68, 0, 12, 61, 0, 13, 55, 0, 14, 55, 0, 131062, 55, 0, 131063, 66, 0, 65544, 65, 0, 65545, 55, 0, 65546, 55, 0, 65547, 55, 0, 65548, 55, 0, 65549, 55, 0, 65550, 55, 0, 196598, 55, 0, 196599, 62, 0, 196600, 60, 0, 131080, 65, 0, 131081, 55, 0, 131082, 74, 0, 131083, 55, 0, 131084, 55, 0, 131085, 55, 0, 131086, 55, 0, 262134, 55, 0, 262135, 74, 0, 262136, 66, 0, 196616, 65, 0, 196617, 55, 0, 196618, 74, 0, 196619, 74, 0, 196620, 74, 0, 196621, 55, 0, 196622, 55, 0, 327670, 55, 0, 327671, 55, 0, 327672, 62, 0, 327673, 68, 0, 327674, 60, 0, 327677, 59, 0, 327678, 60, 0, 262145, 59, 0, 262146, 68, 0, 262147, 68, 0, 262148, 68, 0, 262149, 68, 0, 262150, 68, 0, 262151, 68, 0, 262152, 61, 0, 262153, 55, 0, 262154, 55, 0, 262155, 55, 0, 262156, 55, 0, 262157, 55, 0, 262158, 55, 0, 524280, 199, 0, 524281, 199, 0, 524282, 199, 0, 524283, 199, 0, 524284, 199, 0, 524285, 199, 0, 524286, 199, 0, 524287, 199, 0, 458752, 199, 0, 458753, 199, 0, 458754, 199, 0, 458755, 199, 0 )
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 6 )
+
+[node name="HealthPoints" type="Label" parent="GUI"]
+margin_left = -147.0
+margin_top = -134.0
+margin_right = 8.99998
+margin_bottom = 23.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = SubResource( 211 )
+text = "3x"
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+margin_left = -130.0
+margin_top = -136.0
+margin_right = 950.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 8 )
+
+[node name="Background" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+modulate = Color( 0.639216, 0.639216, 0.639216, 1 )
+position = Vector2( 0, -32.15 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 9 )
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 216, -56 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Door"]
+frames = SubResource( 212 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 213 )
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="Door"]
+stream = ExtResource( 15 )
+volume_db = 10.0

@@ -4,11 +4,16 @@ var random = RandomNumberGenerator.new()
 
 func _ready():
 	random.randomize()
+	DifficultyVariables.easy = false
+	DifficultyVariables.medium = false
+	DifficultyVariables.hard = false
+	LevelVariables.CurrentLevel = 0
 
 func _on_Easy_pressed():
 	print("Pressed Easy Button")
 	DifficultyVariables.easy = true
 	PlayerVariables.Health = 69
+	ClearAllLevels()
 	AddTutorialLevels()
 	GenerateLevels()
 	get_tree().change_scene("res://Scenes/Levels/World 1/Level 1.tscn")
@@ -17,6 +22,7 @@ func _on_Difficult_pressed():
 	print("Pressed Difficult Button")
 	DifficultyVariables.medium = true
 	PlayerVariables.Health = 3
+	ClearAllLevels()
 	AddTutorialLevels()
 	GenerateLevels()
 	get_tree().change_scene("res://Scenes/Levels/World 1/Level 1.tscn")
@@ -25,6 +31,7 @@ func _on_Hardcore_pressed():
 	print("Pressed Hardcore Button")
 	DifficultyVariables.hard = true
 	PlayerVariables.Health = 1
+	ClearAllLevels()
 	AddTutorialLevels()
 	GenerateLevels()
 	get_tree().change_scene("res://Scenes/Levels/World 1/Level 1.tscn")
@@ -67,3 +74,9 @@ func AddTutorialLevels():
 	LevelVariables.WorldTwoLevels.append(1)
 	LevelVariables.WorldThreeLevels.append(1)
 	LevelVariables.WorldFourLevels.append(1)
+
+func ClearAllLevels():
+	LevelVariables.WorldOneLevels.clear()
+	LevelVariables.WorldTwoLevels.clear()
+	LevelVariables.WorldThreeLevels.clear()
+	LevelVariables.WorldFourLevels.clear()

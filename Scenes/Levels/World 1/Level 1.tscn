@@ -1,13 +1,25 @@
-[gd_scene load_steps=205 format=2]
+[gd_scene load_steps=220 format=2]
 
 [ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=1]
 [ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=2]
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Image/Sprite sheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Assets/Audio/Walk 1.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=9]
+[ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Audio/DoorOpen.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.5, 7.5 )
+extents = Vector2( 3.5, 7.5 )
 
 [sub_resource type="Animation" id=12]
 resource_name = "Jump"
@@ -4774,6 +4786,21 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 199/z_index = 0
 
+[sub_resource type="DynamicFont" id=279]
+size = 128
+font_data = ExtResource( 7 )
+
+[sub_resource type="SpriteFrames" id=280]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=281]
+extents = Vector2( 5, 7.5 )
+
 [node name="Node2D" type="Node2D"]
 __meta__ = {
 "_edit_vertical_guides_": [  ]
@@ -4798,6 +4825,17 @@ anims/Jump = SubResource( 12 )
 anims/RESET = SubResource( 11 )
 anims/Run = ExtResource( 1 )
 
+[node name="Jump" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 6 )
+volume_db = -5.0
+
+[node name="Walk" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 8 )
+volume_db = -5.0
+
+[node name="Die" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 12 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 40, -30 )
 current = true
@@ -4805,30 +4843,18 @@ zoom = Vector2( 0.2, 0.2 )
 process_mode = 0
 
 [node name="Label" type="Label" parent="."]
-margin_left = -82.0
-margin_top = -124.0
+margin_left = -102.0
+margin_top = -81.0
 margin_right = 7.181
 margin_bottom = -110.0
 rect_scale = Vector2( 0.5, 0.5 )
 text = "Dit is Euphora"
 
-[node name="Label2" type="Label" parent="."]
-margin_left = -139.0
-margin_top = -99.0
-margin_right = 62.0
-margin_bottom = -30.0
-rect_scale = Vector2( 0.5, 0.5 )
-size_flags_horizontal = 2
-size_flags_vertical = 2
-text = "Voor je zie je twee
-gaten waar je overheen
-moet springen."
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 278 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -589835, 55, 0, -589834, 55, 0, -589833, 55, 0, -589832, 55, 0, -589831, 55, 0, -589830, 55, 0, -589829, 55, 0, -589828, 55, 0, -589827, 55, 0, -589826, 55, 0, -589825, 55, 0, -655360, 55, 0, -655359, 55, 0, -655358, 55, 0, -655357, 55, 0, -655356, 55, 0, -655355, 55, 0, -655354, 55, 0, -655353, 55, 0, -655352, 55, 0, -655351, 55, 0, -655350, 55, 0, -655349, 55, 0, -655348, 55, 0, -655347, 55, 0, -655346, 55, 0, -655345, 55, 0, -524299, 55, 0, -589814, 65, 0, -589813, 55, 0, -589812, 55, 0, -589811, 55, 0, -589810, 55, 0, -589809, 55, 0, -458763, 55, 0, -524278, 65, 0, -524277, 55, 0, -524276, 74, 0, -524275, 74, 0, -524274, 55, 0, -524273, 55, 0, -393227, 55, 0, -458742, 65, 0, -458741, 55, 0, -458740, 55, 0, -458739, 74, 0, -458738, 55, 0, -458737, 55, 0, -327691, 55, 0, -393206, 65, 0, -393205, 55, 0, -393204, 55, 0, -393203, 55, 0, -393202, 55, 0, -393201, 55, 0, -262155, 55, 0, -327670, 65, 0, -327669, 55, 0, -327668, 55, 0, -327667, 55, 0, -327666, 55, 0, -327665, 55, 0, -196619, 55, 0, -262134, 65, 0, -262133, 55, 0, -262132, 9, 0, -262131, 9, 0, -262130, 9, 0, -262129, 55, 0, -131083, 55, 0, -196598, 65, 0, -196597, 55, 0, -196596, 55, 0, -196595, 55, 0, -196594, 55, 0, -196593, 55, 0, -65547, 55, 0, -131062, 65, 0, -131061, 55, 0, -131060, 55, 0, -131059, 55, 0, -131058, 55, 0, -131057, 55, 0, -11, 55, 0, -65526, 65, 0, -65525, 55, 0, -65524, 55, 0, -65523, 55, 0, -65522, 55, 0, -65521, 55, 0, 65525, 55, 0, 4, 56, 0, 10, 65, 0, 11, 55, 0, 12, 55, 0, 13, 55, 0, 14, 55, 0, 15, 55, 0, 131061, 55, 0, 131062, 68, 0, 131063, 68, 0, 131064, 68, 0, 131065, 68, 0, 131066, 60, 0, 131068, 59, 0, 131069, 68, 0, 131070, 68, 0, 131071, 60, 0, 65538, 59, 0, 65539, 68, 0, 65540, 68, 0, 65541, 68, 0, 65542, 68, 0, 65543, 68, 0, 65544, 68, 0, 65545, 68, 0, 65546, 61, 0, 65547, 55, 0, 65548, 55, 0, 65549, 74, 0, 65550, 55, 0, 65551, 55, 0, 196597, 55, 0, 196598, 55, 0, 196599, 55, 0, 196600, 55, 0, 196601, 55, 0, 196602, 66, 0, 196604, 65, 0, 196605, 74, 0, 196606, 55, 0, 196607, 66, 0, 131074, 65, 0, 131075, 55, 0, 131076, 74, 0, 131077, 74, 0, 131078, 55, 0, 131079, 55, 0, 131080, 55, 0, 131081, 55, 0, 131082, 55, 0, 131083, 55, 0, 131084, 74, 0, 131085, 74, 0, 131086, 55, 0, 131087, 55, 0, 262133, 9, 0, 262134, 9, 0, 262135, 55, 0, 262136, 55, 0, 262137, 55, 0, 262138, 66, 0, 262139, 199, 0, 262140, 65, 0, 262141, 74, 0, 262142, 55, 0, 262143, 66, 0, 196608, 199, 0, 196609, 199, 0, 196610, 65, 0, 196611, 55, 0, 196612, 55, 0, 196613, 9, 0, 196614, 9, 0, 196615, 9, 0, 196616, 9, 0, 196617, 55, 0, 196618, 55, 0, 196619, 74, 0, 196620, 74, 0, 196621, 55, 0, 196622, 55, 0, 196623, 55, 0, 327669, 55, 0, 327670, 55, 0, 327671, 55, 0, 327672, 55, 0, 327673, 55, 0, 327674, 62, 0, 327675, 68, 0, 327676, 61, 0, 327677, 55, 0, 327678, 55, 0, 327679, 62, 0, 262144, 68, 0, 262145, 68, 0, 262146, 61, 0, 262147, 55, 0, 262148, 55, 0, 262149, 55, 0, 262150, 55, 0, 262151, 55, 0, 262152, 55, 0, 262153, 55, 0, 262154, 55, 0, 262155, 55, 0, 262156, 55, 0, 262157, 55, 0, 262158, 55, 0, 262159, 55, 0 )
+tile_data = PoolIntArray( -589835, 55, 0, -589834, 55, 0, -589833, 55, 0, -589832, 55, 0, -589831, 55, 0, -589830, 55, 0, -589829, 55, 0, -589828, 55, 0, -589827, 55, 0, -589826, 55, 0, -589825, 55, 0, -655360, 55, 0, -655359, 55, 0, -655358, 55, 0, -655357, 55, 0, -655356, 55, 0, -655355, 55, 0, -655354, 55, 0, -655353, 55, 0, -655352, 55, 0, -655351, 55, 0, -655350, 55, 0, -655349, 55, 0, -655348, 55, 0, -655347, 55, 0, -655346, 55, 0, -655345, 55, 0, -524299, 55, 0, -589814, 65, 0, -589813, 55, 0, -589812, 55, 0, -589811, 55, 0, -589810, 55, 0, -589809, 55, 0, -458763, 55, 0, -524278, 65, 0, -524277, 55, 0, -524276, 74, 0, -524275, 74, 0, -524274, 55, 0, -524273, 55, 0, -393227, 55, 0, -458742, 65, 0, -458741, 55, 0, -458740, 55, 0, -458739, 74, 0, -458738, 55, 0, -458737, 55, 0, -327691, 55, 0, -393206, 65, 0, -393205, 55, 0, -393204, 55, 0, -393203, 55, 0, -393202, 55, 0, -393201, 55, 0, -262155, 55, 0, -327670, 65, 0, -327669, 55, 0, -327668, 55, 0, -327667, 55, 0, -327666, 55, 0, -327665, 55, 0, -196619, 55, 0, -262134, 65, 0, -262133, 55, 0, -262132, 9, 0, -262131, 9, 0, -262130, 9, 0, -262129, 55, 0, -131083, 55, 0, -196598, 65, 0, -196597, 55, 0, -196596, 55, 0, -196595, 55, 0, -196594, 55, 0, -196593, 55, 0, -65547, 55, 0, -131062, 65, 0, -131061, 55, 0, -131060, 55, 0, -131059, 55, 0, -131058, 55, 0, -131057, 55, 0, -11, 55, 0, -65526, 65, 0, -65525, 55, 0, -65524, 55, 0, -65523, 55, 0, -65522, 55, 0, -65521, 55, 0, 65525, 55, 0, 4, 56, 0, 10, 65, 0, 11, 55, 0, 12, 55, 0, 13, 55, 0, 14, 55, 0, 15, 55, 0, 131061, 55, 0, 131062, 68, 0, 131063, 68, 0, 131064, 68, 0, 131065, 68, 0, 131066, 68, 0, 131067, 68, 0, 131068, 68, 0, 131069, 68, 0, 131070, 68, 0, 131071, 68, 0, 65536, 68, 0, 65537, 68, 0, 65538, 68, 0, 65539, 68, 0, 65540, 68, 0, 65541, 68, 0, 65542, 68, 0, 65543, 68, 0, 65544, 68, 0, 65545, 68, 0, 65546, 61, 0, 65547, 55, 0, 65548, 55, 0, 65549, 74, 0, 65550, 55, 0, 65551, 55, 0, 196597, 55, 0, 196598, 55, 0, 196599, 55, 0, 196600, 55, 0, 196601, 55, 0, 196602, 55, 0, 196603, 55, 0, 196604, 55, 0, 196605, 74, 0, 196606, 55, 0, 196607, 55, 0, 131072, 55, 0, 131073, 55, 0, 131074, 55, 0, 131075, 55, 0, 131076, 74, 0, 131077, 74, 0, 131078, 55, 0, 131079, 55, 0, 131080, 55, 0, 131081, 55, 0, 131082, 55, 0, 131083, 55, 0, 131084, 74, 0, 131085, 74, 0, 131086, 55, 0, 131087, 55, 0, 262133, 9, 0, 262134, 9, 0, 262135, 55, 0, 262136, 55, 0, 262137, 55, 0, 262138, 55, 0, 262139, 55, 0, 262140, 55, 0, 262141, 74, 0, 262142, 55, 0, 262143, 55, 0, 196608, 55, 0, 196609, 55, 0, 196610, 55, 0, 196611, 55, 0, 196612, 55, 0, 196613, 9, 0, 196614, 9, 0, 196615, 9, 0, 196616, 9, 0, 196617, 55, 0, 196618, 55, 0, 196619, 74, 0, 196620, 74, 0, 196621, 55, 0, 196622, 55, 0, 196623, 55, 0, 327669, 55, 0, 327670, 55, 0, 327671, 55, 0, 327672, 55, 0, 327673, 55, 0, 327674, 55, 0, 327675, 55, 0, 327676, 55, 0, 327677, 55, 0, 327678, 55, 0, 327679, 55, 0, 262144, 55, 0, 262145, 55, 0, 262146, 55, 0, 262147, 55, 0, 262148, 55, 0, 262149, 55, 0, 262150, 55, 0, 262151, 55, 0, 262152, 55, 0, 262153, 55, 0, 262154, 55, 0, 262155, 55, 0, 262156, 55, 0, 262157, 55, 0, 262158, 55, 0, 262159, 55, 0 )
 
 [node name="Label4" type="Label" parent="."]
 margin_left = 43.0
@@ -4858,3 +4884,48 @@ margin_bottom = 6.0
 rect_scale = Vector2( 0.5, 0.5 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+
+[node name="HealthPoints" type="Label" parent="GUI"]
+margin_left = -147.0
+margin_top = -134.0
+margin_right = 8.99998
+margin_bottom = 23.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = SubResource( 279 )
+text = "3x"
+
+[node name="TextureRect" type="TextureRect" parent="GUI"]
+margin_left = -130.0
+margin_top = -136.0
+margin_right = 950.0
+margin_bottom = 944.0
+rect_scale = Vector2( 0.02, 0.02 )
+texture = ExtResource( 9 )
+
+[node name="Background" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+modulate = Color( 0.639216, 0.639216, 0.639216, 1 )
+position = Vector2( 0, -32.15 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 11 )
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 72, 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Door"]
+frames = SubResource( 280 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 281 )
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="Door"]
+stream = ExtResource( 17 )
+volume_db = 10.0
