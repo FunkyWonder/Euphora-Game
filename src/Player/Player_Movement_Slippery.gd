@@ -3,8 +3,10 @@ extends KinematicBody2D
 const up = Vector2(0,-1)
 const gravity = 20
 const maxFallSpeed = 200
-const maxMovementSpeed = 35
+const maxMovementSpeed = 75
 const jumpForce = 300
+const acceleration = 800
+const maxSpeed = 500
 
 var motion = Vector2()
 var facingRight = true
@@ -19,8 +21,6 @@ func _physics_process(_delta):
 	
 	if motion.y > maxFallSpeed:
 		motion.y = maxFallSpeed
-	
-	motion.x = clamp(motion.x, -maxMovementSpeed, maxMovementSpeed)
 	
 	if Input.is_action_pressed("right"):
 		input = true
@@ -49,7 +49,7 @@ func _physics_process(_delta):
 				$Walk.play()
 	
 	if input == false:
-		motion.x = lerp(motion.x, 0, 0.2)
+		motion = motion.linear_interpolate(Vector2.ZERO, 0.02)
 		$AnimationPlayer.play("Idle")
 		
 		if facingRight == true:
@@ -79,6 +79,8 @@ func _physics_process(_delta):
 		elif motion.y > 0:
 			pass
 			# falling
+	
+	motion.x = clamp(motion.x, -maxMovementSpeed, maxMovementSpeed)
 	
 	motion = move_and_slide(motion, up)
 	
