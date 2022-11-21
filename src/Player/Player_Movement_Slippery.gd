@@ -165,8 +165,7 @@ func _physics_process(_delta):
 					currentLevelNumber = LevelVariables.WorldThreeLevels[LevelVariables.CurrentLevel - 9]
 					get_tree().change_scene("res://Scenes/Levels/World 3/Level %d.tscn"%[currentLevelNumber])
 				else:
-					currentLevelNumber = LevelVariables.WorldFourLevels[LevelVariables.CurrentLevel - 14]
-					get_tree().change_scene("res://Scenes/Levels/World 4/Level %d.tscn"%[currentLevelNumber])
+					get_tree().change_scene("res://Scenes/End.tscn")
 				
 				LevelVariables.CurrentLevel += 1
 		

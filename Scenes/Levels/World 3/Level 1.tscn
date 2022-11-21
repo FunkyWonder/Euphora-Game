@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=2]
+[gd_scene load_steps=220 format=2]
 
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player_Movement_Slippery.gd" type="Script" id=2]
@@ -10,6 +10,11 @@
 [ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Image/Background/Icy Bricks Wall Background Darkened.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 2.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Audio/DoorOpen.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=208]
 extents = Vector2( 3.5, 7.5 )
@@ -4816,6 +4821,17 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 size = 128
 font_data = ExtResource( 7 )
 
+[sub_resource type="SpriteFrames" id=214]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 12 ) ],
+"loop": false,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=215]
+extents = Vector2( 5, 7.5 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
@@ -4857,7 +4873,7 @@ process_mode = 0
 tile_set = SubResource( 207 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 131066, 37, 0, 131067, 37, 0, 131068, 37, 0, 131069, 37, 0, 131070, 37, 0, 131071, 37, 0, 65536, 37, 0, 65537, 37, 0, 65538, 37, 0, 65539, 37, 0, 65540, 37, 0, 65541, 37, 0, 65542, 37, 0, 65543, 37, 0, 65544, 37, 0, 65545, 37, 0, 65546, 199, 0, 65547, 199, 0 )
+tile_data = PoolIntArray( -524298, 46, 0, -524297, 49, 0, -524296, 49, 0, -524295, 49, 0, -524294, 49, 0, -524293, 49, 0, -524292, 49, 0, -524291, 49, 0, -524290, 49, 0, -524289, 49, 0, -589824, 49, 0, -589823, 49, 0, -589822, 49, 0, -589821, 49, 0, -589820, 49, 0, -589819, 49, 0, -589818, 49, 0, -589817, 49, 0, -589816, 49, 0, -589815, 49, 0, -589814, 49, 0, -589813, 49, 0, -589812, 49, 0, -589811, 49, 0, -589810, 45, 0, -458762, 48, 0, -524274, 47, 0, -393226, 48, 0, -458738, 47, 0, -327690, 48, 0, -393202, 47, 0, -262154, 48, 0, -327666, 47, 0, -196618, 48, 0, -262130, 47, 0, -131082, 48, 0, -196594, 47, 0, -65546, 48, 0, -131058, 47, 0, -10, 48, 0, -65522, 47, 0, 65526, 48, 0, 13, 38, 0, 14, 47, 0, 131062, 44, 0, 131063, 50, 0, 131064, 50, 0, 131065, 50, 0, 131066, 50, 0, 131067, 50, 0, 131068, 50, 0, 131069, 50, 0, 131070, 50, 0, 131071, 50, 0, 65536, 50, 0, 65537, 50, 0, 65538, 50, 0, 65539, 50, 0, 65540, 50, 0, 65541, 50, 0, 65542, 50, 0, 65543, 50, 0, 65544, 42, 0, 65547, 41, 0, 65548, 50, 0, 65549, 50, 0, 65550, 43, 0, 196598, 37, 0, 196599, 37, 0, 196600, 37, 0, 196601, 37, 0, 196602, 37, 0, 196603, 37, 0, 196604, 37, 0, 196605, 37, 0, 196606, 37, 0, 196607, 37, 0, 131072, 37, 0, 131073, 37, 0, 131074, 37, 0, 131075, 37, 0, 131076, 37, 0, 131077, 37, 0, 131078, 37, 0, 131079, 37, 0, 131080, 48, 0, 131081, 199, 0, 131082, 199, 0, 131083, 47, 0, 131084, 37, 0, 131085, 37, 0, 131086, 37, 0, 262134, 37, 0, 262135, 37, 0, 262136, 37, 0, 262137, 37, 0, 262138, 37, 0, 262139, 37, 0, 262140, 37, 0, 262141, 37, 0, 262142, 37, 0, 262143, 37, 0, 196608, 37, 0, 196609, 37, 0, 196610, 37, 0, 196611, 37, 0, 196612, 37, 0, 196613, 37, 0, 196614, 37, 0, 196615, 37, 0, 196616, 44, 0, 196617, 50, 0, 196618, 50, 0, 196619, 43, 0, 196620, 37, 0, 196621, 37, 0, 196622, 37, 0, 327670, 37, 0, 327671, 37, 0, 327672, 37, 0, 327673, 37, 0, 327674, 37, 0, 327675, 37, 0, 327676, 37, 0, 327677, 37, 0, 327678, 37, 0, 327679, 37, 0, 262144, 37, 0, 262145, 37, 0, 262146, 37, 0, 262147, 37, 0, 262148, 37, 0, 262149, 37, 0, 262150, 37, 0, 262151, 37, 0, 262152, 37, 0, 262153, 37, 0, 262154, 37, 0, 262155, 37, 0, 262156, 37, 0, 262157, 37, 0, 262158, 37, 0 )
 
 [node name="GUI" type="Control" parent="."]
 margin_right = 40.0
@@ -4889,3 +4905,29 @@ position = Vector2( 0, -32.15 )
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 9 )
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 95.0
+margin_top = -33.0
+margin_right = 331.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Hier is ijs
+Het is heel glibberig, dus let goed op
+dat je niet naar beneden valt"
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2( 216, 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Door"]
+frames = SubResource( 214 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 215 )
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="Door"]
+stream = ExtResource( 15 )
+volume_db = 10.0

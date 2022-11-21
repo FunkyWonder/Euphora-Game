@@ -57,7 +57,7 @@ func GenerateLevels():
 		var RandomNumber = random.randi_range(2, LevelVariables.MaxLevels)
 		
 		while LevelVariables.WorldThreeLevels.has(RandomNumber) == true:
-			RandomNumber = random.randi_range(2, LevelVariables.MaxLevels)
+			RandomNumber = random.randi_range(2, 8)
 		
 		LevelVariables.WorldThreeLevels.append(RandomNumber)
 	
