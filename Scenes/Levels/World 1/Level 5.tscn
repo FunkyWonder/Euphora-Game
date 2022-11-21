@@ -1,4 +1,4 @@
-[gd_scene load_steps=211 format=2]
+[gd_scene load_steps=212 format=2]
 
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=6]
 [ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=206]
 extents = Vector2( 3.5, 7.5 )
@@ -4876,3 +4877,12 @@ margin_right = 950.0
 margin_bottom = 944.0
 rect_scale = Vector2( 0.02, 0.02 )
 texture = ExtResource( 8 )
+
+[node name="Background" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Background"]
+modulate = Color( 0.639216, 0.639216, 0.639216, 1 )
+position = Vector2( 0, -32.15 )
+z_index = -1
+z_as_relative = false
+texture = ExtResource( 9 )
