@@ -1,4 +1,4 @@
-[gd_scene load_steps=223 format=2]
+[gd_scene load_steps=225 format=2]
 
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Audio/ButtonPress.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Audio/DoorOpen.wav" type="AudioStream" id=19]
 
 [sub_resource type="RectangleShape2D" id=208]
 extents = Vector2( 3.5, 7.5 )
@@ -4893,6 +4895,10 @@ texture = ExtResource( 6 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button"]
 polygon = PoolVector2Array( -9, 8, -6, 6, -5, 5, -3, 4, 3, 4, 5, 5, 6, 6, 9, 8 )
 
+[node name="ButtonPress" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource( 18 )
+volume_db = -5.0
+
 [node name="Wall" type="StaticBody2D" parent="."]
 position = Vector2( -104, -24 )
 
@@ -4942,5 +4948,9 @@ frames = SubResource( 215 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 216 )
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="Door"]
+stream = ExtResource( 19 )
+volume_db = 10.0
 
 [connection signal="body_entered" from="Button" to="." method="_on_Button_body_entered"]

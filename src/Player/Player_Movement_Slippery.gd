@@ -14,7 +14,6 @@ var debounce = false
 var currentLevelNumber = 0
 var walkSoundDelay = 0
 var death = false
-onready var tilemap = get_node("../TileMap")
 
 func _physics_process(_delta):
 	var input = false
@@ -87,6 +86,7 @@ func _physics_process(_delta):
 		motion = move_and_slide(motion, up)
 	
 	for i in range(get_slide_count()):
+		var tilemap = get_node("../TileMap")
 		var collision = get_slide_collision(i)
 		var cell = tilemap.world_to_map(collision.position - collision.normal)
 # warning-ignore:unused_variable
@@ -117,6 +117,12 @@ func _physics_process(_delta):
 			if debounce == false:
 				debounce = true
 				
+				get_node("../Door/DoorSound").play()
+				get_node("../Door/AnimatedSprite").set_deferred("playing", true)
+				get_node("../Player").set_deferred("visible", false)
+				
+				yield(get_tree().create_timer(1), "timeout")
+				
 				if LevelVariables.CurrentLevel <= 3:
 					currentLevelNumber = LevelVariables.WorldOneLevels[LevelVariables.CurrentLevel]
 					get_tree().change_scene("res://Scenes/Levels/World 1/Level %d.tscn"%[currentLevelNumber])
@@ -129,6 +135,12 @@ func _physics_process(_delta):
 		if tileID == 1:
 			if debounce == false:
 				debounce = true
+				
+				get_node("../Door/DoorSound").play()
+				get_node("../Door/AnimatedSprite").set_deferred("playing", true)
+				get_node("../Player").set_deferred("visible", false)
+				
+				yield(get_tree().create_timer(1), "timeout")
 				
 				if LevelVariables.CurrentLevel <= 8 and LevelVariables.CurrentLevel >= 4:
 					currentLevelNumber = LevelVariables.WorldTwoLevels[LevelVariables.CurrentLevel - 4]
@@ -143,6 +155,12 @@ func _physics_process(_delta):
 			if debounce == false:
 				debounce = true
 				
+				get_node("../Door/DoorSound").play()
+				get_node("../Door/AnimatedSprite").set_deferred("playing", true)
+				get_node("../Player").set_deferred("visible", false)
+				
+				yield(get_tree().create_timer(1), "timeout")
+				
 				if LevelVariables.CurrentLevel <= 13 and LevelVariables.CurrentLevel >= 9:
 					currentLevelNumber = LevelVariables.WorldThreeLevels[LevelVariables.CurrentLevel - 9]
 					get_tree().change_scene("res://Scenes/Levels/World 3/Level %d.tscn"%[currentLevelNumber])
@@ -155,6 +173,12 @@ func _physics_process(_delta):
 		if tileID == 20:
 			if debounce == false:
 				debounce = true
+				
+				get_node("../Door/DoorSound").play()
+				get_node("../Door/AnimatedSprite").set_deferred("playing", true)
+				get_node("../Player").set_deferred("visible", false)
+				
+				yield(get_tree().create_timer(1), "timeout")
 				
 				if LevelVariables.CurrentLevel <= 18 and LevelVariables.CurrentLevel >= 14:
 					currentLevelNumber = LevelVariables.WorldFourLevels[LevelVariables.CurrentLevel - 14]

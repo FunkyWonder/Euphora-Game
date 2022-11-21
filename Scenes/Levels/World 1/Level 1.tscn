@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=2]
+[gd_scene load_steps=220 format=2]
 
 [ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=1]
 [ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 3.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 1.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Image/Sprites/Deur Open Animation/Door for Brick doorframe 4.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Audio/DoorOpen.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 7.5 )
@@ -4924,3 +4925,7 @@ frames = SubResource( 280 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
 position = Vector2( 0, 0.5 )
 shape = SubResource( 281 )
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="Door"]
+stream = ExtResource( 17 )
+volume_db = 10.0
