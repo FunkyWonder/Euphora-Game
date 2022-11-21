@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=2]
+[gd_scene load_steps=213 format=2]
 
 [ext_resource path="res://Assets/Animations/Run.tres" type="Animation" id=1]
 [ext_resource path="res://Assets/Animations/Idle.tres" type="Animation" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=9]
 [ext_resource path="res://src/GUI/HeartCounter.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.5, 7.5 )
@@ -4815,6 +4816,9 @@ volume_db = -5.0
 [node name="Walk" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 8 )
 volume_db = -5.0
+
+[node name="Die" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 40, -30 )

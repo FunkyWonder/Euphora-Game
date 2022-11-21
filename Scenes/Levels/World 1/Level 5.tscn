@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=2]
+[gd_scene load_steps=213 format=2]
 
 [ext_resource path="res://src/Player/Player_Movement.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Audio/Jump.wav" type="AudioStream" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Image/Background/Plank Wall Background Darkened.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=206]
 extents = Vector2( 3.5, 7.5 )
@@ -4843,6 +4844,9 @@ volume_db = -5.0
 [node name="Walk" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 3 )
 volume_db = -5.0
+
+[node name="Die" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 40, -30 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=2]
+[gd_scene load_steps=213 format=2]
 
 [ext_resource path="res://Assets/Image/Tilemap.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player_Movement_Slippery.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Assets/Image/GUI/Heart.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Image/Background/Icy Bricks Wall Background Darkened.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Audio/Die.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=208]
 extents = Vector2( 3.5, 7.5 )
@@ -4843,6 +4844,9 @@ volume_db = -5.0
 stream = ExtResource( 4 )
 volume_db = -5.0
 
+[node name="Die" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 10 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 40, -30 )
 current = true
@@ -4853,7 +4857,7 @@ process_mode = 0
 tile_set = SubResource( 207 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 131066, 37, 0, 131067, 37, 0, 131068, 37, 0, 131069, 37, 0, 131070, 37, 0, 131071, 37, 0, 65536, 37, 0, 65537, 37, 0, 65538, 37, 0, 65539, 37, 0, 65540, 37, 0, 65541, 37, 0, 65542, 37, 0, 65543, 37, 0, 65544, 37, 0, 65545, 37, 0 )
+tile_data = PoolIntArray( 131066, 37, 0, 131067, 37, 0, 131068, 37, 0, 131069, 37, 0, 131070, 37, 0, 131071, 37, 0, 65536, 37, 0, 65537, 37, 0, 65538, 37, 0, 65539, 37, 0, 65540, 37, 0, 65541, 37, 0, 65542, 37, 0, 65543, 37, 0, 65544, 37, 0, 65545, 37, 0, 65546, 199, 0, 65547, 199, 0 )
 
 [node name="GUI" type="Control" parent="."]
 margin_right = 40.0

@@ -11,6 +11,7 @@ var facingRight = true
 var debounce = false
 var currentLevelNumber = 0
 var walkSoundDelay = 0
+var death = false
 onready var tilemap = get_node("../TileMap")
 
 func _physics_process(_delta):
@@ -22,65 +23,66 @@ func _physics_process(_delta):
 	
 	motion.x = clamp(motion.x, -maxMovementSpeed, maxMovementSpeed)
 	
-	if Input.is_action_pressed("right"):
-		input = true
-		facingRight = true
-		motion.x = motion.x + maxMovementSpeed
-		$AnimationPlayer.play("Run")
-		
-		if is_on_floor():
-			walkSoundDelay += 1
+	if death != true:
+		if Input.is_action_pressed("right"):
+			input = true
+			facingRight = true
+			motion.x = motion.x + maxMovementSpeed
+			$AnimationPlayer.play("Run")
 			
-			if walkSoundDelay >= 15:
-				walkSoundDelay = 0
-				$Walk.play()
-	
-	if Input.is_action_pressed("left"):
-		input = true
-		facingRight = false
-		motion.x = motion.x - maxMovementSpeed
-		$AnimationPlayer.play("Run")
+			if is_on_floor():
+				walkSoundDelay += 1
+				
+				if walkSoundDelay >= 15:
+					walkSoundDelay = 0
+					$Walk.play()
 		
-		if is_on_floor():
-			walkSoundDelay += 1
+		if Input.is_action_pressed("left"):
+			input = true
+			facingRight = false
+			motion.x = motion.x - maxMovementSpeed
+			$AnimationPlayer.play("Run")
 			
-			if walkSoundDelay >= 15:
-				walkSoundDelay = 0
-				$Walk.play()
-	
-	if input == false:
-		motion.x = lerp(motion.x, 0, 0.2)
-		$AnimationPlayer.play("Idle")
+			if is_on_floor():
+				walkSoundDelay += 1
+				
+				if walkSoundDelay >= 15:
+					walkSoundDelay = 0
+					$Walk.play()
 		
-		if facingRight == true:
-			$Sprite.scale.x = -1
+		if input == false:
+			motion.x = lerp(motion.x, 0, 0.2)
+			$AnimationPlayer.play("Idle")
+			
+			if facingRight == true:
+				$Sprite.scale.x = -1
+			else:
+				$Sprite.scale.x = 1
 		else:
-			$Sprite.scale.x = 1
-	else:
-		if facingRight == true:
-			$Sprite.scale.x = 1
-		else:
-			$Sprite.scale.x = -1
-	
-	if is_on_floor():
-		if Input.is_action_pressed("jump"):
-			$Jump.play()
-			motion.y = -jumpForce
-	
-	if !is_on_floor():
-		if motion.y < 0:
-			$AnimationPlayer.play("Jump")
-			
 			if facingRight == true:
 				$Sprite.scale.x = 1
 			else:
 				$Sprite.scale.x = -1
-			
-		elif motion.y > 0:
-			pass
-			# falling
-	
-	motion = move_and_slide(motion, up)
+		
+		if is_on_floor():
+			if Input.is_action_pressed("jump"):
+				$Jump.play()
+				motion.y = -jumpForce
+		
+		if !is_on_floor():
+			if motion.y < 0:
+				$AnimationPlayer.play("Jump")
+				
+				if facingRight == true:
+					$Sprite.scale.x = 1
+				else:
+					$Sprite.scale.x = -1
+				
+			elif motion.y > 0:
+				pass
+				# falling
+		
+		motion = move_and_slide(motion, up)
 	
 	for i in range(get_slide_count()):
 		var collision = get_slide_collision(i)
@@ -95,8 +97,13 @@ func _physics_process(_delta):
 			if debounce == false:
 				debounce = true
 				
+				death = true
+				$Die.play()
+				
 				if DifficultyVariables.medium == true or DifficultyVariables.hard == true:
 					PlayerVariables.Health -= 1
+				
+				yield(get_tree().create_timer(0.2), "timeout")
 				
 				if PlayerVariables.Health == 0:
 					get_tree().change_scene("res://Scenes/GameOver.tscn")
